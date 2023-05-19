@@ -1,0 +1,109 @@
+.date {
+  text-align: center;
+  font-size: 18px;
+  color: rgb(110, 110, 110);
+}
+.outer {
+  box-shadow: none;
+  margin: 0 auto;
+  border-radius: 0;
+  border-width: 2px;
+  border-color: rgba(56, 98, 205, 0.922);
+}
+.inner {
+  max-height: 270px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 11px -5px;
+}
+.city {
+  color: rgba(56, 98, 205, 0.922);
+  font-weight: 700;
+  font-size: 50px;
+  position: relative;
+  top: -20px;
+}
+.emoji {
+  font-size: 50px;
+  position: relative;
+  top: -3px;
+}
+.low-high {
+  font-size: 25px;
+  color: rgb(110, 110, 110);
+  position: relative;
+  top: 35px;
+}
+.low-temp {
+  font-size: 35px;
+  color: rgb(110, 110, 110);
+  position: relative;
+  left: 6px;
+  top: -25px;
+}
+.high-temp {
+  font-size: 35px;
+  color: rgb(110, 110, 110);
+  position: relative;
+  left: -5px;
+  top: -25px;
+}
+.currently {
+  font-size: 18px;
+  font-weight: 470;
+  color: rgba(56, 98, 205, 0.922);
+  position: relative;
+  top: -10px;
+}
+.current-temp {
+  font-size: 50px;
+  color: rgba(56, 98, 205, 0.922);
+  font-weight: 700;
+  position: relative;
+  top: -45px;
+}
+
+.following-days {
+  font-size: 25px;
+  color: rgb(110, 110, 110);
+}
+.temp {
+  position: relative;
+  left: -6px;
+}
+.units {
+  font-size: 20px;
+  color: rgba(56, 98, 205, 0.922);
+  font-weight: 500;
+  position: relative;
+  top: -30px;
+  left: -130px;
+}
+a {
+  text-decoration: none;
+  color: rgba(56, 98, 205, 0.922);
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 2px solid rgb(110, 110, 110);
+  width: 130px;
+  text-align: center;
+  position: relative;
+  top: 5px;
+}
+
+input[type="submit"] {
+  border: none;
+  background-color: white;
+  color: rgb(110, 110, 110);
+  font-size: 25px;
+  position: relative;
+  left: -100px;
+  top: 2px;
+}
+#current-location {
+  position: relative;
+  top: 5px;
+  left: 95px;
+  border: none;
+}

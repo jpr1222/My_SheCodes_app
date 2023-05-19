@@ -101,6 +101,9 @@ input[type="submit"] {
   left: -100px;
   top: 2px;
 }
+p {
+  margin: 0 auto 10px 27%;
+}
 #current-location {
   position: relative;
   top: 5px;

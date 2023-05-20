@@ -3,6 +3,9 @@
   font-size: 18px;
   color: rgb(110, 110, 110);
 }
+.container {
+  margin: 0 auto;
+}
 .outer {
   box-shadow: none;
   margin: 0 auto;
@@ -65,6 +68,8 @@
 .following-days {
   font-size: 25px;
   color: rgb(110, 110, 110);
+  position: relative;
+  top: 15px;
 }
 .temp {
   position: relative;
@@ -101,9 +106,7 @@ input[type="submit"] {
   left: -100px;
   top: 2px;
 }
-p {
-  margin: 0 auto 10px 27%;
-}
+
 #current-location {
   position: relative;
   top: 5px;

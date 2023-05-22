@@ -6,6 +6,7 @@ function showTemperature(response) {
 function showTemperatureAndLocation(response) {
   let temperatureElement = document.querySelector(".current-temp");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
   let city = document.querySelector(".city");
   city.innerHTML = response.data.name;
 }
@@ -67,8 +68,7 @@ dateAndTime.innerHTML = date.toLocaleString("en-US", {
 function changeToFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector(".current-temp");
-  let temperature = currentTemperature.innerHTML;
-  currentTemperature.innerHTML = Math.round((temperature * 5) / 9 + 32);
+  currentTemperature.innerHTML = Math.round((celsiusTemp * 5) / 9 + 32);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
@@ -82,5 +82,6 @@ function changeToCelsius(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+let celsiusTemp = null;
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", changeToCelsius);

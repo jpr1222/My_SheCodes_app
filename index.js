@@ -76,10 +76,8 @@ fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 function changeToCelsius(event) {
   event.preventDefault();
-  let apiKey = "4740d8db992b43b0c7a9e5f8488b5195";
-  let city = document.querySelector(".city").innerHTML;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
+  let currentTemperature = document.querySelector(".current-temp");
+  currentTemperature.innerHTML = Math.round(celsiusTemp);
 }
 
 let celsiusTemp = null;

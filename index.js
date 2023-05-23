@@ -13,8 +13,8 @@ function date() {
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector(".current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  celsiusTemp = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemp = response.data.temperature.current;
 }
 
 function search(event) {
@@ -24,7 +24,7 @@ function search(event) {
   let searchInput = document.querySelector("#city-input");
   let currentCity = document.querySelector(".city");
   let city = searchInput.value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   if (searchInput.value) {
     currentCity.innerHTML = searchInput.value;
     currentCity.innerHTML =
@@ -43,7 +43,7 @@ function getPosition(event) {
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperatureAndLocation);
 }
 
@@ -51,10 +51,10 @@ function showTemperatureAndLocation(response) {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let temperatureElement = document.querySelector(".current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  celsiusTemp = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemp = response.data.temperature.current;
   let city = document.querySelector(".city");
-  city.innerHTML = response.data.name;
+  city.innerHTML = response.data.city;
 }
 
 function changeToFahrenheit(event) {
@@ -79,9 +79,9 @@ let currentLocButton = document.querySelector("button");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusTemp = null;
 let celsiusLink = document.querySelector("#celsius-link");
-let apiKey = "4740d8db992b43b0c7a9e5f8488b5195";
+let apiKey = "c4a2d9bo8e1d3060da83ae339f9cb9t7";
 let city = document.querySelector(".city").innerHTML;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 let form = document.querySelector("#search-city-form");
 
 ////////////////////////////////////////////////////////////////////////

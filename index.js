@@ -68,6 +68,8 @@ dateAndTime.innerHTML = date.toLocaleString("en-US", {
 /////////////////////////////////////////
 function changeToFahrenheit(event) {
   event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
   let currentTemperature = document.querySelector(".current-temp");
   currentTemperature.innerHTML = Math.round((celsiusTemp * 5) / 9 + 32);
 }
@@ -77,6 +79,8 @@ fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 function changeToCelsius(event) {
   event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let currentTemperature = document.querySelector(".current-temp");
   currentTemperature.innerHTML = Math.round(celsiusTemp);
 }

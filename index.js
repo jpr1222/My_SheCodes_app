@@ -12,9 +12,13 @@ function date() {
 }
 
 function showTemperature(response) {
-  let temperatureElement = document.querySelector(".current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
   celsiusTemp = response.data.temperature.current;
+  let emoji = response.data.condition.icon;
+  let img = document.querySelector("img");
+  let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
+  img.setAttribute("src", emojiLink);
+  img.setAttribute("alt", emoji);
 }
 
 function search(event) {
@@ -50,8 +54,7 @@ function showPosition(position) {
 function showTemperatureAndLocation(response) {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-  let temperatureElement = document.querySelector(".current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
   celsiusTemp = response.data.temperature.current;
   let city = document.querySelector(".city");
   city.innerHTML = response.data.city;
@@ -61,20 +64,20 @@ function changeToFahrenheit(event) {
   event.preventDefault();
   fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
-  let currentTemperature = document.querySelector(".current-temp");
-  currentTemperature.innerHTML = Math.round((celsiusTemp * 5) / 9 + 32);
+
+  currentTemperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
 }
 
 function changeToCelsius(event) {
   event.preventDefault();
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-  let currentTemperature = document.querySelector(".current-temp");
+
   currentTemperature.innerHTML = Math.round(celsiusTemp);
 }
 
 ///////////////////////////////////////////////////////////////
-
+let currentTemperature = document.querySelector(".current-temp");
 let currentLocButton = document.querySelector("button");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusTemp = null;

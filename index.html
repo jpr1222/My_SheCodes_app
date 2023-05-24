@@ -22,7 +22,7 @@
           <div class="date">Sunday, Dec 4 2022, 15:57</div>
           <div class="card inner" style="max-width: 35rem">
             <div class="container text-center">
-              <div class="row">
+              <div class="row" id="geoloc-and-seachform">
                 <div class="col">
                   <span
                     ><button id="current-location" title="Current location">
@@ -44,31 +44,24 @@
                   <form><input type="submit" value="✓" /></form>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" id="low-icon-high">
                 <div class="col">
                   <div class="low-high">Low</div>
                 </div>
                 <div class="col">
-                  <img src="" alt="" class="main-emoji" />
+                  <img src="" alt="" class="main-emoji" title="" />
                 </div>
                 <div class="col">
                   <div class="low-high">High</div>
                 </div>
               </div>
-              <div class="row">
+              <div class="row" id="current-city">
                 <div class="city">Berlin</div>
               </div>
-              <div class="row">
+              <div class="row" id="lowTemp-currentTemp-units-highTemp">
                 <div class="col"><div class="low-temp">1 °C</div></div>
-                <div class="col"><div class="currently">CURRENTLY</div></div>
-                <div class="col"><div class="high-temp">4 °C</div></div>
-              </div>
-              <div class="row">
-                <div class="col"></div>
                 <div class="col">
                   <span class="current-temp"> </span>
-                </div>
-                <div class="col">
                   <span class="units">
                     <a href="#" id="celsius-link" title="Celsius" class="active"
                       >°C</a
@@ -77,6 +70,10 @@
                     <a href="#" id="fahrenheit-link" title="Fahrenheit">°F</a>
                   </span>
                 </div>
+                <div class="col"><div class="high-temp">4 °C</div></div>
+              </div>
+              <div class="row" id="wind-row">
+                <div class="wind">Wind: <span class="wind-speed"></span></div>
               </div>
             </div>
           </div>

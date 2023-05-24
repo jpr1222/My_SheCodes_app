@@ -15,10 +15,12 @@ function showTemperature(response) {
   currentTemperature.innerHTML = Math.round(response.data.temperature.current);
   celsiusTemp = response.data.temperature.current;
   let emoji = response.data.condition.icon;
-  let img = document.querySelector("img");
   let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
   img.setAttribute("src", emojiLink);
   img.setAttribute("alt", emoji);
+  img.setAttribute("title", response.data.condition.description);
+  windSpeedMetric = response.data.wind.speed;
+  windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
 }
 
 function search(event) {
@@ -59,26 +61,28 @@ function showTemperatureAndLocation(response) {
   let city = document.querySelector(".city");
   city.innerHTML = response.data.city;
   let emoji = response.data.condition.icon;
-  let img = document.querySelector("img");
   let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
   img.setAttribute("src", emojiLink);
   img.setAttribute("alt", emoji);
+  img.setAttribute("title", response.data.condition.description);
+  windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
+  console.log(response);
 }
 
 function changeToFahrenheit(event) {
   event.preventDefault();
   fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
-
   currentTemperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+  windSpeed.innerHTML = Math.round(windSpeedMetric / 6) + " mph";
 }
 
 function changeToCelsius(event) {
   event.preventDefault();
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-
   currentTemperature.innerHTML = Math.round(celsiusTemp);
+  windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
 }
 
 ///////////////////////////////////////////////////////////////
@@ -86,6 +90,9 @@ let currentTemperature = document.querySelector(".current-temp");
 let currentLocButton = document.querySelector("button");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusTemp = null;
+let img = document.querySelector("img");
+let windSpeed = document.querySelector(".wind-speed");
+let windSpeedMetric = null;
 let celsiusLink = document.querySelector("#celsius-link");
 let apiKey = "c4a2d9bo8e1d3060da83ae339f9cb9t7";
 let city = document.querySelector(".city").innerHTML;

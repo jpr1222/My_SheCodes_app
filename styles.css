@@ -50,19 +50,28 @@
   left: -5px;
   top: -25px;
 }
-.currently {
+.wind {
   font-size: 18px;
   font-weight: 470;
-  color: rgba(56, 98, 205, 0.922);
+  color: rgb(110, 110, 110);
   position: relative;
-  top: -10px;
+  top: -40px;
 }
 .current-temp {
   font-size: 50px;
   color: rgba(56, 98, 205, 0.922);
   font-weight: 700;
   position: relative;
-  top: -45px;
+  top: -40px;
+  left: +27px;
+}
+.units {
+  font-size: 20px;
+  font-weight: 350;
+  color: rgba(56, 98, 205, 0.922);
+  position: relative;
+  top: -59px;
+  left: +22px;
 }
 
 .following-days {
@@ -75,14 +84,7 @@
   position: relative;
   left: -6px;
 }
-.units {
-  font-size: 20px;
-  font-weight: 350;
-  color: rgba(56, 98, 205, 0.922);
-  position: relative;
-  top: -30px;
-  left: -130px;
-}
+
 a {
   color: rgba(56, 98, 205, 0.922);
   font-weight: 350;

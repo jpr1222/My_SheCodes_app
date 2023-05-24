@@ -58,6 +58,11 @@ function showTemperatureAndLocation(response) {
   celsiusTemp = response.data.temperature.current;
   let city = document.querySelector(".city");
   city.innerHTML = response.data.city;
+  let emoji = response.data.condition.icon;
+  let img = document.querySelector("img");
+  let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
+  img.setAttribute("src", emojiLink);
+  img.setAttribute("alt", emoji);
 }
 
 function changeToFahrenheit(event) {

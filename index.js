@@ -56,17 +56,16 @@ function showPosition(position) {
 function showTemperatureAndLocation(response) {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
   celsiusTemp = response.data.temperature.current;
-  let city = document.querySelector(".city");
-  city.innerHTML = response.data.city;
+  currentTemperature.innerHTML = Math.round(celsiusTemp);
+  city = response.data.city;
   let emoji = response.data.condition.icon;
   let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
   img.setAttribute("src", emojiLink);
   img.setAttribute("alt", emoji);
   img.setAttribute("title", response.data.condition.description);
+  windSpeedMetric = response.data.wind.speed;
   windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
-  console.log(response);
 }
 
 function changeToFahrenheit(event) {

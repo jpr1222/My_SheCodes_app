@@ -16,7 +16,6 @@
   </head>
   <body>
     <div class="container" style="max-width: 45rem">
-      <br />
       <div class="card outer" style="max-width: 45rem">
         <div class="card-body">
           <div class="date">Sunday, Dec 4 2022, 15:57</div>
@@ -24,11 +23,9 @@
             <div class="container text-center">
               <div class="row" id="geoloc-and-seachform">
                 <div class="col">
-                  <span
-                    ><button id="current-location" title="Current location">
-                      📌
-                    </button></span
-                  >
+                  <button id="current-location" title="Current location">
+                    📌
+                  </button>
                 </div>
                 <div class="col">
                   <form class="form" id="search-city-form">
@@ -77,51 +74,9 @@
               </div>
             </div>
           </div>
-          <br />
-
-          <div class="container text-center following-days">
-            <div class="row temp">
-              <div class="col">Mon 🌧️</div>
-              <div class="col">Tue 🌨️</div>
-              <div class="col">Wed 🌨️</div>
-              <div class="col">Thu ⛅</div>
-            </div>
-            <div class="row temp">
-              <div class="col">4 °C</div>
-              <div class="col">2 °C</div>
-              <div class="col">3 °C</div>
-              <div class="col">3 °C</div>
-            </div>
-            <div class="row temp">
-              <div class="col">2 °C</div>
-              <div class="col">4 °C</div>
-              <div class="col">-1 °C</div>
-              <div class="col">-1 °C</div>
-            </div>
-            <br />
-            <div class="row temp">
-              <div class="col">Fri ☁️</div>
-              <div class="col">Sat ☁️</div>
-              <div class="col">Sun ⛅</div>
-              <div class="col">Mon ⛅</div>
-            </div>
-            <div class="row temp">
-              <div class="col">2 °C</div>
-              <div class="col">2 °C</div>
-              <div class="col">2 °C</div>
-              <div class="col">3 °C</div>
-            </div>
-            <div class="row temp">
-              <div class="col">-3 °C</div>
-              <div class="col">-4 °C</div>
-              <div class="col">-4 °C</div>
-              <div class="col">-3 °C</div>
-            </div>
-            <br />
-          </div>
+          <div class="weather-forecast" id="forecast"></div>
         </div>
       </div>
-
       <p>
         <a href="https://github.com/jpr1222/My_SheCodes_app" target="_blank"
           >Open source code</a

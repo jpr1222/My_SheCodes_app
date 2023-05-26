@@ -11,10 +11,34 @@ function date() {
   });
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-3">
+        <div class="weather-forecast-day">${day} <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                  alt="clear-sky-day"
+                  width="40"
+                />
+        </div>
+        <div class="weather-forecast-temp-max">20 °C</div>
+        <div class="weather-forecast-temp-min">-10 °C</div> 
+      </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   currentTemperature.innerHTML = Math.round(response.data.temperature.current);
   celsiusTemp = response.data.temperature.current;
   let emoji = response.data.condition.icon;
+  console.log(emoji);
   let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
   img.setAttribute("src", emojiLink);
   img.setAttribute("alt", emoji);
@@ -60,6 +84,7 @@ function showTemperatureAndLocation(response) {
   currentTemperature.innerHTML = Math.round(celsiusTemp);
   city = response.data.city;
   let emoji = response.data.condition.icon;
+  console.log(response);
   let emojiLink = `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${emoji}.png`;
   img.setAttribute("src", emojiLink);
   img.setAttribute("alt", emoji);
@@ -106,3 +131,4 @@ form.addEventListener("submit", search);
 currentLocButton.addEventListener("click", getPosition);
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 celsiusLink.addEventListener("click", changeToCelsius);
+showForecast();

@@ -9,6 +9,7 @@
 .outer {
   box-shadow: none;
   margin: 0 auto;
+  margin-top: 15px;
   border-radius: 0;
   border-width: 2px;
   border-color: rgba(56, 98, 205, 0.922);
@@ -74,10 +75,11 @@
   left: +22px;
 }
 
-.following-days {
+#forecast {
   font-size: 25px;
   color: rgb(110, 110, 110);
-  margin-top: 17px;
+  margin-top: 40px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -128,4 +130,7 @@ input[type="submit"] {
   top: 5px;
   left: 95px;
   border: none;
+}
+p {
+  margin-bottom: 5px;
 }

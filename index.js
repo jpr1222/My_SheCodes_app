@@ -73,7 +73,7 @@ function changeToFahrenheit(event) {
   fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
   currentTemperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-  windSpeed.innerHTML = Math.round(windSpeedMetric / 6) + " mph";
+  windSpeed.innerHTML = Math.round(windSpeedMetric / 1.609) + " mph";
 }
 
 function changeToCelsius(event) {

@@ -77,12 +77,8 @@
 .following-days {
   font-size: 25px;
   color: rgb(110, 110, 110);
-  position: relative;
-  top: 15px;
-}
-.temp {
-  position: relative;
-  left: -6px;
+  margin-top: 17px;
+  text-align: center;
 }
 
 a {

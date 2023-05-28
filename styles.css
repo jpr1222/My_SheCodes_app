@@ -107,7 +107,7 @@ input[type="text"] {
 input[type="submit"] {
   border: none;
   background-color: white;
-  color: #606765;
+  color: #6ba9ca;
   font-size: 25px;
   position: relative;
   left: -100px;
@@ -136,4 +136,7 @@ input[type="submit"] {
 }
 p {
   margin-bottom: 5px;
+}
+button {
+  color: aliceblue;
 }

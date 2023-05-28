@@ -23,6 +23,13 @@ function showForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `</br><div class="row">`;
+  let lowTempElement = document.querySelector(".low-temp");
+  let highTempElement = document.querySelector(".high-temp");
+  lowTempElement.innerHTML =
+    Math.round(response.data.daily[0].temperature.minimum) + "°C";
+  highTempElement.innerHTML =
+    Math.round(response.data.daily[0].temperature.maximum) + "°C";
+
   forecast.forEach(function (forecastDay, index) {
     if ((index < 7) & (index > 0)) {
       forecastHTML =

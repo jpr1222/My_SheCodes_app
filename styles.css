@@ -1,7 +1,7 @@
 .date {
   text-align: center;
   font-size: 18px;
-  color: rgb(110, 110, 110);
+  color: #606765;
 }
 .container {
   margin: 0 auto;
@@ -12,7 +12,7 @@
   margin-top: 3px;
   border-radius: 0;
   border-width: 2px;
-  border-color: rgba(56, 98, 205, 0.922);
+  border-color: #6ba9ca;
 }
 .inner {
   max-height: 270px;
@@ -20,7 +20,7 @@
   box-shadow: 2px 2px 11px -5px;
 }
 .city {
-  color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
   font-weight: 700;
   font-size: 50px;
   position: relative;
@@ -33,20 +33,20 @@
 }
 .low-high {
   font-size: 25px;
-  color: rgb(110, 110, 110);
+  color: #606765;
   position: relative;
   top: 35px;
 }
 .low-temp {
   font-size: 35px;
-  color: rgb(110, 110, 110);
+  color: #606765;
   position: relative;
   left: 6px;
   top: -25px;
 }
 .high-temp {
   font-size: 35px;
-  color: rgb(110, 110, 110);
+  color: #606765;
   position: relative;
   left: -5px;
   top: -25px;
@@ -54,13 +54,13 @@
 .wind {
   font-size: 18px;
   font-weight: 470;
-  color: rgb(110, 110, 110);
+  color: #606765;
   position: relative;
   top: -40px;
 }
 .current-temp {
   font-size: 50px;
-  color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
   font-weight: 700;
   position: relative;
   top: -40px;
@@ -69,7 +69,7 @@
 .units {
   font-size: 20px;
   font-weight: 350;
-  color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
   position: relative;
   top: -59px;
   left: +22px;
@@ -77,25 +77,27 @@
 
 #forecast {
   font-size: 25px;
-  color: rgb(110, 110, 110);
+  color: #606765;
   text-align: center;
 }
 
 a {
-  color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
   font-weight: 350;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
-  text-decoration-color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
+  font-weight: 500;
+  text-decoration-color: #6ba9ca;
   text-decoration-thickness: 0.9px;
 }
 
 input[type="text"] {
   border: none;
-  border-bottom: 2px solid rgb(110, 110, 110);
+  border-bottom: 2px solid #606765;
   width: 130px;
   text-align: center;
   position: relative;
@@ -105,7 +107,7 @@ input[type="text"] {
 input[type="submit"] {
   border: none;
   background-color: white;
-  color: rgb(110, 110, 110);
+  color: #606765;
   font-size: 25px;
   position: relative;
   left: -100px;
@@ -113,7 +115,7 @@ input[type="submit"] {
 }
 
 .active {
-  color: rgba(56, 98, 205, 0.922);
+  color: #6ba9ca;
   font-size: 22px;
   font-weight: 700;
   text-decoration: none;
@@ -121,6 +123,9 @@ input[type="submit"] {
 .active:hover {
   text-decoration: none;
   cursor: default;
+  color: #6ba9ca;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 #current-location {

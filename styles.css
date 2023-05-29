@@ -98,7 +98,7 @@ a:hover {
 input[type="text"] {
   border: none;
   border-bottom: 2px solid #606765;
-  width: 130px;
+  max-width: 130px;
   text-align: center;
   position: relative;
   top: 5px;
@@ -133,10 +133,10 @@ input[type="submit"] {
   top: 5px;
   left: 95px;
   border: none;
+  background-color: white;
+  color: white;
+  size: 5px;
 }
 p {
   margin-bottom: 5px;
-}
-button {
-  color: aliceblue;
 }

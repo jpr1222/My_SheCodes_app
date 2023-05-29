@@ -24,7 +24,7 @@
   font-weight: 700;
   font-size: 50px;
   position: relative;
-  top: -20px;
+  top: -25px;
 }
 .main-emoji {
   max-width: 70px;
@@ -32,24 +32,24 @@
   top: -3px;
 }
 .low-high {
-  font-size: 25px;
+  font-size: 20px;
   color: #606765;
   position: relative;
-  top: 35px;
+  top: 40px;
 }
 .low-temp {
-  font-size: 35px;
+  font-size: 30px;
   color: #606765;
   position: relative;
   left: 6px;
-  top: -25px;
+  top: -35px;
 }
 .high-temp {
-  font-size: 35px;
+  font-size: 30px;
   color: #606765;
   position: relative;
   left: -5px;
-  top: -25px;
+  top: -35px;
 }
 .wind {
   font-size: 18px;
@@ -128,7 +128,7 @@ input[type="submit"] {
   font-weight: 700;
 }
 
-#current-location {
+#geolocation-button {
   position: relative;
   top: 5px;
   left: 95px;

@@ -18,7 +18,7 @@ function Day(timestamp) {
   return days[day];
 }
 
-function showForecast(response) {
+function showForecastCelsius(response) {
   console.log(response);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -28,8 +28,6 @@ function showForecast(response) {
     Math.round(response.data.daily[0].temperature.minimum) + "°C";
   highTempElement.innerHTML =
     Math.round(response.data.daily[0].temperature.maximum) + "°C";
-  lowTempTodayCels = response.data.daily[0].temperature.minimum;
-  highTempTodayCels = response.data.daily[0].temperature.maximum;
 
   forecast.forEach(function (forecastDay, index) {
     if ((index < 7) & (index > 0)) {
@@ -57,6 +55,43 @@ function showForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+function showForecastFahrenheit(response) {
+  console.log(response);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `</br><div class="row">`;
+
+  lowTempElement.innerHTML =
+    Math.round(response.data.daily[0].temperature.minimum) + "°F";
+  highTempElement.innerHTML =
+    Math.round(response.data.daily[0].temperature.maximum) + "°F";
+
+  forecast.forEach(function (forecastDay, index) {
+    if ((index < 7) & (index > 0)) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-4">
+        <div class="weather-forecast-day">${Day(forecastDay.time)} <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                    forecastDay.condition.icon
+                  }.png"
+                  alt="${forecastDay.condition.icon}"
+                  width="40"
+                />
+        </div>
+        <div class="weather-forecast-temp-max"> ${Math.round(
+          forecastDay.temperature.maximum
+        )} °F</div>
+        <div class="weather-forecast-temp-min"> ${Math.round(
+          forecastDay.temperature.minimum
+        )} °F</div> </br>
+      </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function showTemperature(response) {
   currentTemperature.innerHTML = Math.round(response.data.temperature.current);
@@ -77,8 +112,9 @@ function search(event) {
   let searchInput = document.querySelector("#city-input");
   let currentCity = document.querySelector(".city");
   let city = searchInput.value;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  apiUrlForecastImperial = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
   if (searchInput.value) {
     currentCity.innerHTML = searchInput.value;
     currentCity.innerHTML =
@@ -87,7 +123,7 @@ function search(event) {
     searchInput.value = null;
   }
   axios.get(apiUrl).then(showTemperatureAndLocation);
-  axios.get(apiUrlForecast).then(showForecast);
+  axios.get(apiUrlForecast).then(showForecastCelsius);
 }
 
 function getPosition(event) {
@@ -98,10 +134,11 @@ function getPosition(event) {
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
-  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
+  apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
+  apiUrlForecastImperial = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemperatureAndLocation);
-  axios.get(apiUrlForecast).then(showForecast);
+  axios.get(apiUrlForecast).then(showForecastCelsius);
 }
 
 function showTemperatureAndLocation(response) {
@@ -125,9 +162,7 @@ function changeToFahrenheit(event) {
   celsiusLink.classList.remove("active");
   currentTemperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
   windSpeed.innerHTML = Math.round(windSpeedMetric / 1.609) + " mph";
-  lowTempElement.innerHTML = Math.round((lowTempTodayCels * 9) / 5 + 32) + "°F";
-  highTempElement.innerHTML =
-    Math.round((highTempTodayCels * 9) / 5 + 32) + "°F";
+  axios.get(apiUrlForecastImperial).then(showForecastFahrenheit);
 }
 
 function changeToCelsius(event) {
@@ -136,34 +171,38 @@ function changeToCelsius(event) {
   celsiusLink.classList.add("active");
   currentTemperature.innerHTML = Math.round(celsiusTemp);
   windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
-  lowTempElement.innerHTML = Math.round(lowTempTodayCels) + "°C";
-  highTempElement.innerHTML = Math.round(highTempTodayCels) + "°C";
+  axios.get(apiUrlForecast).then(showForecastCelsius);
 }
 
+function getTemp() {
+  let city = document.querySelector(".city").innerHTML;
+  apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  apiUrlForecastImperial = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrlForecast).then(showForecastCelsius);
+}
 ///////////////////////////////////////////////////////////////
+let apiKey = "c4a2d9bo8e1d3060da83ae339f9cb9t7";
 let currentTemperature = document.querySelector(".current-temp");
 let currentLocButton = document.querySelector("button");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-let celsiusTemp = null;
-
 let img = document.querySelector(".main-emoji");
 let windSpeed = document.querySelector(".wind-speed");
-let windSpeedMetric = null;
 let celsiusLink = document.querySelector("#celsius-link");
-let apiKey = "c4a2d9bo8e1d3060da83ae339f9cb9t7";
-let city = document.querySelector(".city").innerHTML;
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 let form = document.querySelector("#search-city-form");
 let lowTempElement = document.querySelector(".low-temp");
 let highTempElement = document.querySelector(".high-temp");
-let lowTempTodayCels = null;
-let highTempTodayCels = null;
+
+let celsiusTemp = null;
+let windSpeedMetric = null;
+let apiUrl = null;
+let apiUrlForecast = null;
+let apiUrlForecastImperial = null;
 ////////////////////////////////////////////////////////////////////////
 
 date();
-axios.get(apiUrl).then(showTemperature);
-axios.get(apiUrlForecast).then(showForecast);
+getTemp();
 form.addEventListener("submit", search);
 currentLocButton.addEventListener("click", getPosition);
 fahrenheitLink.addEventListener("click", changeToFahrenheit);

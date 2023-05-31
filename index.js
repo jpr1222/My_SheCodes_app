@@ -23,12 +23,13 @@ function showForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `</br><div class="row">`;
-  let lowTempElement = document.querySelector(".low-temp");
-  let highTempElement = document.querySelector(".high-temp");
+
   lowTempElement.innerHTML =
     Math.round(response.data.daily[0].temperature.minimum) + "°C";
   highTempElement.innerHTML =
     Math.round(response.data.daily[0].temperature.maximum) + "°C";
+  lowTempTodayCels = response.data.daily[0].temperature.minimum;
+  highTempTodayCels = response.data.daily[0].temperature.maximum;
 
   forecast.forEach(function (forecastDay, index) {
     if ((index < 7) & (index > 0)) {
@@ -124,6 +125,9 @@ function changeToFahrenheit(event) {
   celsiusLink.classList.remove("active");
   currentTemperature.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
   windSpeed.innerHTML = Math.round(windSpeedMetric / 1.609) + " mph";
+  lowTempElement.innerHTML = Math.round((lowTempTodayCels * 9) / 5 + 32) + "°F";
+  highTempElement.innerHTML =
+    Math.round((highTempTodayCels * 9) / 5 + 32) + "°F";
 }
 
 function changeToCelsius(event) {
@@ -132,6 +136,8 @@ function changeToCelsius(event) {
   celsiusLink.classList.add("active");
   currentTemperature.innerHTML = Math.round(celsiusTemp);
   windSpeed.innerHTML = Math.round(windSpeedMetric) + " km/h";
+  lowTempElement.innerHTML = Math.round(lowTempTodayCels) + "°C";
+  highTempElement.innerHTML = Math.round(highTempTodayCels) + "°C";
 }
 
 ///////////////////////////////////////////////////////////////
@@ -139,6 +145,7 @@ let currentTemperature = document.querySelector(".current-temp");
 let currentLocButton = document.querySelector("button");
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusTemp = null;
+
 let img = document.querySelector(".main-emoji");
 let windSpeed = document.querySelector(".wind-speed");
 let windSpeedMetric = null;
@@ -148,7 +155,10 @@ let city = document.querySelector(".city").innerHTML;
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 let form = document.querySelector("#search-city-form");
-
+let lowTempElement = document.querySelector(".low-temp");
+let highTempElement = document.querySelector(".high-temp");
+let lowTempTodayCels = null;
+let highTempTodayCels = null;
 ////////////////////////////////////////////////////////////////////////
 
 date();

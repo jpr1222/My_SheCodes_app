@@ -191,6 +191,7 @@ let img = document.querySelector(".main-emoji");
 let windSpeed = document.querySelector(".wind-speed");
 let celsiusLink = document.querySelector("#celsius-link");
 let form = document.querySelector("#search-city-form");
+let submitButton = document.querySelector(".submit");
 let lowTempElement = document.querySelector(".low-temp");
 let highTempElement = document.querySelector(".high-temp");
 
@@ -204,6 +205,7 @@ let apiUrlForecastImperial = null;
 date();
 getTemp();
 form.addEventListener("submit", search);
+submitButton.addEventListener("click", search);
 currentLocButton.addEventListener("click", getPosition);
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 celsiusLink.addEventListener("click", changeToCelsius);
